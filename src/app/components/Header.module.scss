@@ -1,0 +1,55 @@
+/* Header.module.scss */
+
+.header {
+  background-color: #1F2937;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+}
+
+.nav {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.25rem; // text-xl = 1.25rem
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #D1D5DB;
+  }
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  a {
+    color: #D1D5DB;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
