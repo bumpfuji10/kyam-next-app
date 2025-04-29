@@ -5,9 +5,9 @@ export default function Header() {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <div className={styles.navInner}>
-          <a href="/" className={styles.logo}>Portfolio</a>
+          <a href="/" className={styles.logo}>Kyam</a>
           <div className={styles.links}>
-            <a href="/articles">記事</a>
+            <a href="/articles">Blog</a>
             <a href="/about">Me</a>
           </div>
         </div>
