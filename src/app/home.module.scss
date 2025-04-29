@@ -188,9 +188,10 @@
     border-radius: 0.5rem;
     overflow: hidden;
     transition: all 0.3s ease;
+    cursor: pointer;
 
     &:hover {
-      background-color: rgba(17, 24, 39, 0.8);
+      background-color: gray;
     }
 
     &-header {
