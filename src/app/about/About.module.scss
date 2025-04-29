@@ -1,0 +1,74 @@
+.about {
+  opacity: 0;
+  transition: opacity 1s;
+  padding-top: 4rem; // pt-16
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.container {
+  max-width: 72rem; // max-w-6xl
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.section {
+  padding: 2rem;
+  margin-bottom: 5rem;
+}
+
+.sectionTitle {
+  font-size: 2.25rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.sectionSubtitle {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.textGray300 {
+  color: #D1D5DB;
+}
+
+.textGray400 {
+  color: #9CA3AF;
+}
+
+.gridTwoColumn {
+  display: grid;
+  gap: 3rem;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.iconBlue {
+  color: #60A5FA;
+}
+
+.contactIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.contactLink {
+  color: #60A5FA;
+  transition: color 0.3s;
+  text-decoration: none;
+
+  &:hover {
+    color: #93C5FD;
+  }
+}
