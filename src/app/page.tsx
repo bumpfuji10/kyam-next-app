@@ -1,7 +1,9 @@
 import Link from "next/link"
 import Image from 'next/image';
 import styles from "./home.module.scss"
+import PostContent from "./components/PostContent";
 import { getArticles } from "./../../lib/api";
+import { sliceContent } from "./../app/utils/sliceConent";
 
 const FETCH_ARTICLES_LIMIT: number = 3;
 
@@ -14,6 +16,7 @@ type Article = {
 
 export default async function Home() {
   const { contents: articles } = await getArticles(FETCH_ARTICLES_LIMIT);
+  const truncate100 = sliceContent(100);
 
   return (
     <div className="container">
@@ -81,25 +84,21 @@ export default async function Home() {
           <p className={styles["blog__description"]}>技術的な知見や経験を共有しています</p>
         </div>
         <div className={styles["blog__grid"]}>
-          {articles.map((post: Article) => (
-            <div key={post.id} className={styles["blog__card"]}>
+          {articles.map((article: Article) => (
+            <Link key={article.id} href={`/articles/${article.id}`} className={styles["blog__card"]}>
               <div className={styles["blog__card-header"]}>
-                <h3 className={styles.title}>{post.title}</h3>
+                <h3 className={styles.title}>{article.title}</h3>
                 <p className={styles.date}>
-                  {new Date(post.publishedAt).toLocaleDateString("ja-JP")}
+                  {new Date(article.publishedAt).toLocaleDateString("ja-JP")}
                 </p>
               </div>
               <div className={styles["blog__card-content"]}>
-                <p className={styles.description}>
-                  {post.content ? post.content.slice(0, 100) + "..." : "記事本文なし"}
-                </p>
+                <PostContent html={truncate100(article.content)} className={styles.description} />
               </div>
               <div className={styles["blog__card-footer"]}>
-                <Link href={`/articles/${post.id}`} className={styles.btn}>
-                  記事を読む
-                </Link>
+                <span className={styles.btn}>記事を読む</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className={styles["blog__more"]}>
