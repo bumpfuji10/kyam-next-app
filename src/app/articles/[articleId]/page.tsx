@@ -1,5 +1,6 @@
 import { getArticle } from "../../../../lib/api";
-import styles from '../../page.module.css';
+import styles from './../../articles/[articleId]/ArticleShow.module.scss'
+import { highlightHtml } from '../../../../lib/highlight';
 
 // サーバーコンポーネントとして実装
 export default async function ArticlesShowPage({ params }: any) {
@@ -8,15 +9,16 @@ export default async function ArticlesShowPage({ params }: any) {
     const resolvedParams = await params;
     // サーバーサイドで記事を取得
     const article = await getArticle(resolvedParams.articleId);
+    const highlightedContent = await highlightHtml(article.content);
 
     return (
       <main className={styles.main}>
-        <div className={styles.description}>
+        <div className="description">
           <h1>{article.title}</h1>
           <p>公開日: {new Date(article.publishedAt).toLocaleDateString("ja-JP")}</p>
-          <div>
+          <div className="article-content">
             {article.content ? (
-              <div dangerouslySetInnerHTML={{ __html: article.content }} />
+              <div dangerouslySetInnerHTML={{ __html: highlightedContent }} />
             ) : (
               <p>本文がありません。</p>
             )}
