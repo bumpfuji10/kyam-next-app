@@ -3,7 +3,6 @@ import axios from "axios";
 const API_BASE_URL = "https://lbt0630zfb.microcms.io/api/v1";
 const API_KEY = process.env.MICROCMS_API_KEY || process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
 
-// 環境変数チェック関数
 const checkApiKey = () => {
   if (!API_KEY) {
     const isVercel = process.env.VERCEL === '1';
@@ -20,12 +19,20 @@ const checkApiKey = () => {
   }
 };
 
-// サーバーサイドでのみ実行される関数
-export const getArticles = async () => {
+export const getArticles = async (limit?: number) => {
   checkApiKey();
+
+  const params: Record<string, any> = {
+    orders: "-publishedAt"
+  }
+
+  if (limit) {
+    params.limit = limit;
+  }
 
   try {
     const res = await axios.get(`${API_BASE_URL}/articles`, {
+      params: params,
       headers: {
         "X-MICROCMS-API-KEY": API_KEY
       }
