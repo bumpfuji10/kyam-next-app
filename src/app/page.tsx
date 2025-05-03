@@ -1,8 +1,20 @@
 import Link from "next/link"
 import Image from 'next/image';
 import styles from "./home.module.scss"
+import { getArticles } from "./../../lib/api";
 
-export default function Home() {
+const FETCH_ARTICLES_LIMIT: number = 3;
+
+type Article = {
+  id: string;
+  title: string;
+  publishedAt: string;
+  content: string;
+}
+
+export default async function Home() {
+  const { contents: articles } = await getArticles(FETCH_ARTICLES_LIMIT);
+
   return (
     <div className="container">
       {/* ヒーローセクション */}
@@ -69,33 +81,21 @@ export default function Home() {
           <p className={styles["blog__description"]}>技術的な知見や経験を共有しています</p>
         </div>
         <div className={styles["blog__grid"]}>
-          {[
-            {
-              title: "Next.js 14の新機能について",
-              date: "2024年4月15日",
-              description: "Next.js 14で導入された新機能と、それらを活用する方法について解説します。",
-            },
-            {
-              title: "TypeScriptの型システムを極める",
-              date: "2024年3月28日",
-              description: "TypeScriptの高度な型システムを理解し、より堅牢なコードを書くためのテクニック。",
-            },
-            {
-              title: "CSSでのレスポンシブデザイン",
-              date: "2024年3月10日",
-              description: "CSSを使用して効率的にレスポンシブデザインを実装する方法。",
-            },
-          ].map((post, index) => (
-            <div key={index} className={styles["blog__card"]}>
+          {articles.map((post: Article) => (
+            <div key={post.id} className={styles["blog__card"]}>
               <div className={styles["blog__card-header"]}>
                 <h3 className={styles.title}>{post.title}</h3>
-                <p className={styles.date}>{post.date}</p>
+                <p className={styles.date}>
+                  {new Date(post.publishedAt).toLocaleDateString("ja-JP")}
+                </p>
               </div>
               <div className={styles["blog__card-content"]}>
-                <p className={styles.description}>{post.description}</p>
+                <p className={styles.description}>
+                  {post.content ? post.content.slice(0, 100) + "..." : "記事本文なし"}
+                </p>
               </div>
               <div className={styles["blog__card-footer"]}>
-                <Link href="/blog" className={styles.btn}>
+                <Link href={`/articles/${post.id}`} className={styles.btn}>
                   記事を読む
                 </Link>
               </div>
@@ -103,11 +103,12 @@ export default function Home() {
           ))}
         </div>
         <div className={styles["blog__more"]}>
-          <Link href="/blog" className={`${styles.btn} ${styles["btn-outline"]}`}>
+          <Link href="/articles" className={`${styles.btn} ${styles["btn-outline"]}`}>
             すべての記事を見る
           </Link>
         </div>
       </section>
+
 
 
       {/* お問い合わせセクション */}
