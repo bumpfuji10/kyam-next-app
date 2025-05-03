@@ -19,7 +19,7 @@ export default async function Home() {
   const truncate100 = sliceContent(100);
 
   return (
-    <div className="container">
+    <div>
       {/* ヒーローセクション */}
       <section className={styles.hero}>
         <div className={styles.hero__icon}>
