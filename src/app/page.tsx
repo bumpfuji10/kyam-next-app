@@ -110,7 +110,6 @@ export default async function Home() {
       </section>
 
 
-
       {/* お問い合わせセクション */}
       <section className={styles.contact}>
         <div className={styles["contact__content"]}>
