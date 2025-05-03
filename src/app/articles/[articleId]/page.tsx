@@ -4,8 +4,10 @@ import styles from '../../page.module.css';
 // サーバーコンポーネントとして実装
 export default async function ArticlesShowPage({ params }: any) {
   try {
+    // Next.js 15ではparamsをawaitする必要がある
+    const resolvedParams = await params;
     // サーバーサイドで記事を取得
-    const article = await getArticle(params.articleId);
+    const article = await getArticle(resolvedParams.articleId);
 
     return (
       <main className={styles.main}>
