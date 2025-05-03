@@ -91,7 +91,7 @@ export default async function Home() {
               </div>
               <div className={styles["blog__card-content"]}>
                 <p className={styles.description}>
-                  {post.content ? post.content.slice(0, 100) + "..." : "記事本文なし"}
+                  {post.content.replace(/<[^>]+>/g, '').slice(0, 100) + "..."}
                 </p>
               </div>
               <div className={styles["blog__card-footer"]}>
