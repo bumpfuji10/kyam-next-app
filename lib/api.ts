@@ -23,7 +23,8 @@ export const getArticles = async (limit?: number) => {
   checkApiKey();
 
   const params: Record<string, any> = {
-    orders: "-publishedAt"
+    orders: "-publishedAt",
+    limit: limit? limit : 100,
   }
 
   if (limit) {
