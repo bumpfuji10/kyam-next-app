@@ -1,4 +1,9 @@
 import styles from './About.module.scss';
+import cardStyles from './../card.module.scss'
+import { DiRuby } from "react-icons/di";
+import { SiRubyonrails } from "react-icons/si";
+import { IoLogoJavascript } from "react-icons/io5";
+import { FaVuejs } from "react-icons/fa";
 
 export default function About() {
   const isVisible = true; // ここは仮でtrue。実際はuseEffectなどで制御可能
@@ -14,31 +19,33 @@ export default function About() {
 
         {/* 自己紹介＋スキル */}
         <section className={`${styles.section} ${styles.gridTwoColumn}`}>
-          <div>
-            <h2 className={styles.sectionSubtitle}>自己紹介</h2>
-            <p className={styles.textGray300}>
-              スケーラブルなWebアプリケーション開発に5年以上の経験を持つWebエンジニアです。
-              効率的で保守性の高いソリューションを提供し、実際のビジネス課題を解決することに情熱を注いでいます。
+          <div className={cardStyles.aboutCard}>
+            <h2 className={cardStyles["aboutCard-header"]}>Introduction</h2>
+            <p className={styles["aboutCard-description"]}>
+              2022年7月に広島のスタートアップでWebエンジニアとして働いたあと、色々あり2023年2月から都内のスタートアップで働いてます。
+              <br />現職ではサーバーサイドエンジニア(Ruby, Rails)として従事しておりますが、機能開発や改善においてはフロントエンドまで一貫して担当しています。
+              <br />仕事以外では地域rbによく出没して、知見を深めるようにしています。使えそうなものは社内で共有して実践するようにしています。
+              <br />最近はOOPやデータモデリングについて深く学び、設計パターンの理解を深めています。
             </p>
           </div>
           <div>
-            <h2 className={styles.sectionSubtitle}>技術スキル</h2>
+            <h2 className={styles.sectionSubtitle}>Skills</h2>
             <div className={styles.gridTwoColumn}>
               <div className={styles.skillItem}>
-                <i className={`fas fa-code ${styles.iconBlue}`}></i>
-                <span className={styles.textGray300}>JavaScript/TypeScript</span>
+                <DiRuby />
+                <span className={styles.textGray300}>Ruby</span>
               </div>
               <div className={styles.skillItem}>
-                <i className={`fab fa-react ${styles.iconBlue}`}></i>
-                <span className={styles.textGray300}>React</span>
+                <SiRubyonrails />
+                <span className={styles.textGray300}>Ruby on Rails</span>
               </div>
               <div className={styles.skillItem}>
-                <i className={`fab fa-node ${styles.iconBlue}`}></i>
-                <span className={styles.textGray300}>Node.js</span>
+                <IoLogoJavascript />
+                <span className={styles.textGray300}>JavaScript</span>
               </div>
               <div className={styles.skillItem}>
-                <i className={`fas fa-database ${styles.iconBlue}`}></i>
-                <span className={styles.textGray300}>SQL/NoSQL</span>
+                <FaVuejs />
+                <span className={styles.textGray300}>Vue.js</span>
               </div>
             </div>
           </div>
@@ -49,18 +56,18 @@ export default function About() {
           <h2 className={styles.sectionSubtitle}>職務経歴</h2>
           <div className="space-y-6">
             <div>
-              <h3 className={styles.sectionSubtitle}>シニアWebエンジニア</h3>
-              <p className={styles.textGray400}>株式会社テックソリューションズ | 2020年 - 現在</p>
+              <h3 className={styles.sectionSubtitle}>Webエンジニア(サーバーサイド)</h3>
+              <p className={styles.textGray400}>株式会社Stak | 2022年7月 - 2022年12月</p>
               <p className={styles.textGray300}>
-                エンタープライズ規模のWebアプリケーション開発をリード。
-                システムのパフォーマンスを40%改善
+                レンタルスペースのマッチングプラットフォームの開発に従事
               </p>
             </div>
             <div>
-              <h3 className={styles.sectionSubtitle}>フルスタックデベロッパー</h3>
-              <p className={styles.textGray400}>株式会社デジタルイノベーションズ | 2018年 - 2020年</p>
+              <h3 className={styles.sectionSubtitle}>Webエンジニア(サーバーサイド・フロントエンド)</h3>
+              <p className={styles.textGray400}>オシロ株式会社 | 2023年2月 - 現在</p>
               <p className={styles.textGray300}>
-                複数のクライアント向けアプリケーションの開発・保守を担当
+                コミュニティプラットフォームの機能開発および保守運用、改善に従事
+                <br />
               </p>
             </div>
           </div>
