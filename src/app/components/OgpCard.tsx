@@ -12,7 +12,7 @@ return (
     <div className="ogpCard">
       <a className={ogpCardStyles.ogpCard__cardLink} href={url} target="_blank" rel="noopener noreferrer">
         <div className={ogpCardStyles.ogpCard__content}>
-          {image && <img className="ogpCard__leftImage" src={image} alt="OGP Image" width="300" />}
+          {image && <img className={ogpCardStyles.ogpCard__leftImage} src={image} alt="OGP Image" />}
           <div className={ogpCardStyles.ogpCard__rightText}>
             <h4>{title}</h4>
             <p>{description}</p>
