@@ -1,5 +1,8 @@
 import Link from "next/link"
 import styles from "./Footer.module.scss"
+import { SiZenn } from "react-icons/si";
+import { FaXTwitter } from "react-icons/fa6";
+
 
 export default function Footer() {
   return (
@@ -8,14 +11,11 @@ export default function Footer() {
         <div className={styles.footer__content}>
           <h3 className={styles.footer__brand}>Kyam</h3>
           <div className={styles.footer__social}>
-            <Link href="#" className="footer__social-link">
-              <span className="sr-only">Facebook</span>
+            <Link href="https://zenn.dev/yokamada_dev" className="footer__social-link">
+              <SiZenn />
             </Link>
             <Link href="#" className="footer__social-link">
-              <span className="sr-only">Instagram</span>
-            </Link>
-            <Link href="#" className="footer__social-link">
-              <span className="sr-only">Twitter</span>
+              <FaXTwitter />
             </Link>
           </div>
 
