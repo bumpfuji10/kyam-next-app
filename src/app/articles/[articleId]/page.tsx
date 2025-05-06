@@ -2,7 +2,8 @@ import { getArticle } from "../../../../lib/api";
 import styles from './../../articles/[articleId]/ArticleShow.module.scss';
 import { highlightHtml } from '../../../../lib/highlight';
 import { fetchOgp } from '../../../../lib/fetchOgp';
-import OgpCard from './../../components/OgpCard'
+import OgpCard from './../../components/OgpCard';
+import parse, { DOMNode, Element } from 'html-react-parser';
 
 // URL抽出用の正規表現関数（簡易版）
 function extractExternalUrls(content: string): string[] {
@@ -10,21 +11,44 @@ function extractExternalUrls(content: string): string[] {
   return urlMatches.map(m => m[1]);
 }
 
-// サーバーコンポーネント
 export default async function ArticlesShowPage({ params }: any) {
   try {
     const resolvedParams = await params;
     const article = await getArticle(resolvedParams.articleId);
     const highlightedContent = await highlightHtml(article.content);
 
-    // contentからURL抽出
+    // --- ① contentからURL抽出 ---
     const urls = extractExternalUrls(article.content);
 
-    // 各URLのOGP情報取得
+    // --- ② 各URLのOGP情報取得 ---
     const ogpResults: Record<string, any> = {};
     for (const url of urls) {
       ogpResults[url] = await fetchOgp(url);
     }
+
+    // --- ③ contentをパースし、リンクの直後にOGPカードを差し込む ---
+    const contentWithCards = parse(highlightedContent, {
+      replace(domNode) {
+        if (domNode instanceof Element && domNode.name === 'a') {
+          const href = domNode.attribs.href;
+          if (href && ogpResults[href]) {
+            return (
+              <div>
+                <a href={href} target="_blank" rel="noopener noreferrer">
+                  {domNode.children.map(child => (typeof child === 'string' ? child : null))}
+                </a>
+                <OgpCard
+                  title={ogpResults[href].title}
+                  description={ogpResults[href].description}
+                  image={ogpResults[href].image}
+                  url={href}
+                />
+              </div>
+            );
+          }
+        }
+      }
+    });
 
     return (
       <main className={styles.main}>
@@ -33,22 +57,9 @@ export default async function ArticlesShowPage({ params }: any) {
           <p>{new Date(article.publishedAt).toLocaleDateString("ja-JP")}</p>
           <div className="article-content">
             {article.content ? (
-              <>
-                <div dangerouslySetInnerHTML={{ __html: highlightedContent }} />
-                <div>
-                {urls.map(url => (
-                  ogpResults[url]?.title || ogpResults[url]?.description || ogpResults[url]?.image ? (
-                    <OgpCard
-                      key={url}
-                      title={ogpResults[url].title}
-                      description={ogpResults[url].description}
-                      image={ogpResults[url].image}
-                      url={url}
-                    />
-                  ) : null
-                ))}
-                </div>
-              </>
+              <div>
+                {contentWithCards}
+              </div>
             ) : (
               <p>本文がありません。</p>
             )}
