@@ -8,7 +8,24 @@ import "./globals.scss"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Kyam Portal"
+  title: "Kyam Portal",
+  description: "Kyam Portal Site",
+  openGraph: {
+    title: "Kyam Portal",
+    description: "Kyam Portal Site",
+    url: "https://kyam-next-app.vercel.app/",
+    siteName: "Kyam Portal",
+    images: [
+      {
+        url: "https://kyam-next-app.vercel.app/thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Kyam Portal",
+      }
+    ],
+    locale: "ja_JP",
+    type: "website",
+  }
 }
 
 export default function RootLayout({

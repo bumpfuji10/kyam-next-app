@@ -90,7 +90,7 @@ export default function About() {
             <div>
             <h3 className={cardStyles["aboutCard-subTitle"]}>
               2019年4月 - 2022年6月
-              <br />株式会社ドッドウエルビー・エム・エス
+              <br />セキュリティ商材専門商社
               <br />セールス
             </h3>
             <p className={cardStyles["aboutCard-description"]}>
@@ -98,7 +98,7 @@ export default function About() {
             </p>
               <h3 className={cardStyles["aboutCard-subTitle"]}>
                 2022年7月 - 2022年12月
-                <br />株式会社Stak
+                <br />事業会社
                 <br />Webエンジニア(サーバーサイド)
               </h3>
               <p className={cardStyles["aboutCard-description"]}>
@@ -106,7 +106,7 @@ export default function About() {
               </p>
               <h3 className={cardStyles["aboutCard-subTitle"]}>
                 2023年2月 - 現在
-                <br />オシロ株式会社
+                <br />事業会社
                 <br />Webエンジニア(サーバーサイド・フロントエンド)
               </h3>
               <p className={cardStyles["aboutCard-description"]}>
