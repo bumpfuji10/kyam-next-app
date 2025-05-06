@@ -15,31 +15,22 @@ $text-muted: #9ca3af;
   }
 
   &-header {
-    padding: 1.25rem 1.25rem 0.75rem;
-
-    .icon {
-      margin-bottom: 1rem;
-
-      svg {
-        width: 2.5rem;
-        height: 2.5rem;
-        color: #a78bfa;
-      }
-    }
-
-    .title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: white;
-    }
+    padding: 20px 20px 0 20px;
   }
 
-  &-description {
-    padding: 0.75rem 1.25rem 1.25rem;
 
-    .description {
-      color: $text-muted;
-    }
+  &-description {
+    padding: 1.25rem;
+    color: $text-muted;
+  }
+
+  &-subTitle {
+    padding: 20px 20px 0;
+  }
+
+  &-skillWrapper {
+    padding: 0 20px;
+    color: $text-muted;
   }
 }
 

@@ -4,6 +4,12 @@ import { DiRuby } from "react-icons/di";
 import { SiRubyonrails } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io5";
 import { FaVuejs } from "react-icons/fa";
+import { TbSql } from "react-icons/tb";
+import { FaDocker } from "react-icons/fa";
+import { FaPhp } from "react-icons/fa";
+import { FaLaravel } from "react-icons/fa";
+import { GrGraphQl } from "react-icons/gr";
+import { SiTypescript } from "react-icons/si";
 
 export default function About() {
   const isVisible = true; // ここは仮でtrue。実際はuseEffectなどで制御可能
@@ -21,74 +27,85 @@ export default function About() {
         <section className={`${styles.section} ${styles.gridTwoColumn}`}>
           <div className={cardStyles.aboutCard}>
             <h2 className={cardStyles["aboutCard-header"]}>Introduction</h2>
-            <p className={styles["aboutCard-description"]}>
+            <p className={cardStyles["aboutCard-description"]}>
               2022年7月に広島のスタートアップでWebエンジニアとして働いたあと、色々あり2023年2月から都内のスタートアップで働いてます。
               <br />現職ではサーバーサイドエンジニア(Ruby, Rails)として従事しておりますが、機能開発や改善においてはフロントエンドまで一貫して担当しています。
               <br />仕事以外では地域rbによく出没して、知見を深めるようにしています。使えそうなものは社内で共有して実践するようにしています。
               <br />最近はOOPやデータモデリングについて深く学び、設計パターンの理解を深めています。
             </p>
           </div>
-          <div>
-            <h2 className={styles.sectionSubtitle}>Skills</h2>
-            <div className={styles.gridTwoColumn}>
-              <div className={styles.skillItem}>
-                <DiRuby />
-                <span className={styles.textGray300}>Ruby</span>
+
+          <div className={cardStyles.aboutCard}>
+          <h2 className={cardStyles["aboutCard-header"]}>Skills</h2>
+            <div className="aboutCard-skillBoard">
+              <h3 className={cardStyles["aboutCard-subTitle"]}>JobSkills</h3>
+              <div className={cardStyles["aboutCard-skillWrapper"]}>
+                <p className={styles.gridTwoColumn}>
+                  <span className={styles.skillItem}>
+                    <DiRuby />Ruby
+                  </span>
+                  <span className={styles.skillItem}>
+                    <SiRubyonrails />
+                    Ruby on Rails
+                  </span>
+                  <span className={styles.skillItem}>
+                    <IoLogoJavascript />JavaScript
+                  </span>
+                  <span className={styles.skillItem}>
+                    <FaVuejs />Vue.js
+                  </span>
+                  <span className={styles.skillItem}>
+                    <TbSql />SQL(MySQL)
+                  </span>
+                  <span className={styles.skillItem}>
+                    <FaDocker />Docker
+                  </span>
+                </p>
               </div>
-              <div className={styles.skillItem}>
-                <SiRubyonrails />
-                <span className={styles.textGray300}>Ruby on Rails</span>
-              </div>
-              <div className={styles.skillItem}>
-                <IoLogoJavascript />
-                <span className={styles.textGray300}>JavaScript</span>
-              </div>
-              <div className={styles.skillItem}>
-                <FaVuejs />
-                <span className={styles.textGray300}>Vue.js</span>
+            </div>
+            <div className='aboutCard-skillBoard'>
+              <h3 className={cardStyles["aboutCard-subTitle"]}>ExperiencedSkills</h3>
+              <div className={cardStyles["aboutCard-skillWrapper"]}>
+                <p className={styles.gridTwoColumn}>
+                  <span className={styles.skillItem}>
+                    <FaPhp />PHP
+                  </span>
+                  <span className={styles.skillItem}>
+                    <FaLaravel />
+                    Laravel
+                  </span>
+                  <span className={styles.skillItem}>
+                    <GrGraphQl />GraphQL
+                  </span>
+                  <span className={styles.skillItem}>
+                    <SiTypescript />TypeScript
+                  </span>
+                </p>
               </div>
             </div>
           </div>
-        </section>
 
-        {/* 職務経歴セクション */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionSubtitle}>職務経歴</h2>
-          <div className="space-y-6">
+          <div className={cardStyles.aboutCard}>
+            <h2 className={cardStyles["aboutCard-header"]}>職務経歴</h2>
             <div>
-              <h3 className={styles.sectionSubtitle}>Webエンジニア(サーバーサイド)</h3>
-              <p className={styles.textGray400}>株式会社Stak | 2022年7月 - 2022年12月</p>
-              <p className={styles.textGray300}>
-                レンタルスペースのマッチングプラットフォームの開発に従事
+              <h3 className={cardStyles["aboutCard-subTitle"]}>
+                株式会社Stak | 2022年7月 - 2022年12月
+                <br />Webエンジニア(サーバーサイド)
+              </h3>
+              <p className={cardStyles["aboutCard-description"]}>
+                <br />レンタルスペースのマッチングプラットフォームの開発に従事。
+              </p>
+              <h3 className={cardStyles["aboutCard-subTitle"]}>
+                オシロ株式会社 | 2023年2月 - 現在
+                <br />Webエンジニア(サーバーサイド・フロントエンド)
+              </h3>
+              <p className={cardStyles["aboutCard-description"]}>
+                コミュニティプラットフォームの機能開発および保守運用、改善に従事。
+                <br />社内ツールの改善や、問い合わせ対応なども行う。
               </p>
             </div>
-            <div>
-              <h3 className={styles.sectionSubtitle}>Webエンジニア(サーバーサイド・フロントエンド)</h3>
-              <p className={styles.textGray400}>オシロ株式会社 | 2023年2月 - 現在</p>
-              <p className={styles.textGray300}>
-                コミュニティプラットフォームの機能開発および保守運用、改善に従事
-                <br />
-              </p>
-            </div>
           </div>
         </section>
-
-        {/* お問い合わせセクション */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionSubtitle}>お問い合わせ</h2>
-          <div className={styles.contactIcons}>
-            <a href="mailto:contact@example.com" className={styles.contactLink}>
-              <i className="fas fa-envelope fa-2x"></i>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
-              <i className="fab fa-linkedin fa-2x"></i>
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
-              <i className="fab fa-github fa-2x"></i>
-            </a>
-          </div>
-        </section>
-
       </div>
     </div>
   );

@@ -11,7 +11,13 @@
 .container {
   max-width: 72rem;
   margin: 0 auto;
-  padding: 16px;
+}
+
+.skillItem {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .section {
@@ -43,7 +49,8 @@
 
 .gridTwoColumn {
   display: grid;
-  gap: 3rem;
+  align-items: start;
+  gap: 20px;
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -52,7 +59,7 @@
 .skillItem {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .iconBlue {
@@ -73,4 +80,8 @@
   &:hover {
     color: #93C5FD;
   }
+}
+
+.descritpion {
+  padding: .75rem 1.25rem;
 }

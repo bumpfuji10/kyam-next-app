@@ -4,6 +4,7 @@ import styles from "./home.module.scss"
 import PostContent from "./components/PostContent";
 import { getArticles } from "./../../lib/api";
 import { sliceContent } from "./../app/utils/sliceConent";
+import { FaArrowRight } from "react-icons/fa";
 
 const FETCH_ARTICLES_LIMIT: number = 3;
 
@@ -61,6 +62,7 @@ export default async function Home() {
               </div>
               <div className={styles["blog__card-footer"]}>
                 <span className={styles.btn}>記事を読む</span>
+                <FaArrowRight />
               </div>
             </Link>
           ))}

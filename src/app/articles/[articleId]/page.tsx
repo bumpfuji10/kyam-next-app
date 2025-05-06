@@ -15,7 +15,7 @@ export default async function ArticlesShowPage({ params }: any) {
       <main className={styles.main}>
         <div className="description">
           <h1>{article.title}</h1>
-          <p>公開日: {new Date(article.publishedAt).toLocaleDateString("ja-JP")}</p>
+          <p>{new Date(article.publishedAt).toLocaleDateString("ja-JP")}</p>
           <div className="article-content">
             {article.content ? (
               <div dangerouslySetInnerHTML={{ __html: highlightedContent }} />
