@@ -88,15 +88,25 @@ export default function About() {
           <div className={cardStyles.aboutCard}>
             <h2 className={cardStyles["aboutCard-header"]}>職務経歴</h2>
             <div>
+            <h3 className={cardStyles["aboutCard-subTitle"]}>
+              2019年4月 - 2022年6月
+              <br />株式会社ドッドウエルビー・エム・エス
+              <br />セールス
+            </h3>
+            <p className={cardStyles["aboutCard-description"]}>
+              <br />カメラをメインとしたセキュリティ商材を、マンション管理組合や賃貸物件オーナーに提案。
+            </p>
               <h3 className={cardStyles["aboutCard-subTitle"]}>
-                株式会社Stak | 2022年7月 - 2022年12月
+                2022年7月 - 2022年12月
+                <br />株式会社Stak
                 <br />Webエンジニア(サーバーサイド)
               </h3>
               <p className={cardStyles["aboutCard-description"]}>
                 <br />レンタルスペースのマッチングプラットフォームの開発に従事。
               </p>
               <h3 className={cardStyles["aboutCard-subTitle"]}>
-                オシロ株式会社 | 2023年2月 - 現在
+                2023年2月 - 現在
+                <br />オシロ株式会社
                 <br />Webエンジニア(サーバーサイド・フロントエンド)
               </h3>
               <p className={cardStyles["aboutCard-description"]}>
