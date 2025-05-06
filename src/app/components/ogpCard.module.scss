@@ -1,0 +1,26 @@
+.ogpCard {
+
+  &__cardLink {
+    border-radius: '8px'
+  }
+
+  &__content {
+    margin: 10px 0;
+    display: flex;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #1F2937;
+  }
+
+  &__leftImage {
+
+  }
+
+  &__rightText {
+    padding: 10px;
+    background-color: #111827;
+    color: white;
+    width: 100%;
+  }
+}
