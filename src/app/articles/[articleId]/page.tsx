@@ -4,28 +4,6 @@ import { highlightHtml } from '../../../../lib/highlight';
 import { fetchOgp } from '../../../../lib/fetchOgp';
 import OgpCard from './../../components/OgpCard';
 import parse, { Element } from 'html-react-parser';
-import type { Metadata } from "next";
-
-export async function generateMetadata({ params }: { params: { articleId: string } }): Promise<Metadata> {
-  const article = await getArticle(params.articleId);
-
-  return {
-    title: article.title,
-    description: article.summary || article.content.slice(0, 100),
-    openGraph: {
-      title: article.title,
-      description: article.summary || article.content.slice(0, 100),
-      url: `https://kyam-next-app.vercel.app/articles/${params.articleId}`,
-      images: [
-        {
-          url: 'https://kyam-next-app.vercel.app/thumbnail.png',
-          width: 1200,
-          height: 630,
-        },
-      ],
-    }
-  };
-}
 
 // URL抽出用の正規表現関数（簡易版）
 function extractExternalUrls(content: string): string[] {
@@ -33,9 +11,9 @@ function extractExternalUrls(content: string): string[] {
   return urlMatches.map(m => m[1]);
 }
 
-export default async function ArticlesShowPage({ params }: any) {
+export default async function ArticlesShowPage({ params }: { params: { articleId: string } }) {
   try {
-    const resolvedParams = await params;
+    const resolvedParams = params;
     const article = await getArticle(resolvedParams.articleId);
     const highlightedContent = await highlightHtml(article.content);
 
