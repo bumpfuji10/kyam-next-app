@@ -3,7 +3,7 @@ import styles from './../../articles/[articleId]/ArticleShow.module.scss';
 import { highlightHtml } from '../../../../lib/highlight';
 import { fetchOgp } from '../../../../lib/fetchOgp';
 import OgpCard from './../../components/OgpCard';
-import parse, { Element } from 'html-react-parser';
+import parse, { DOMNode, Element } from 'html-react-parser';
 
 // URL抽出用の正規表現関数（簡易版）
 function extractExternalUrls(content: string): string[] {
@@ -11,9 +11,9 @@ function extractExternalUrls(content: string): string[] {
   return urlMatches.map(m => m[1]);
 }
 
-export default async function ArticlesShowPage({ params }: { params: { articleId: string } }) {
+export default async function ArticlesShowPage({ params }: any) {
   try {
-    const resolvedParams = params;
+    const resolvedParams = await params;
     const article = await getArticle(resolvedParams.articleId);
     const highlightedContent = await highlightHtml(article.content);
 
