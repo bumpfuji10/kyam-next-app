@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "Kyam Portal",
     images: [
       {
-        url: "https://kyam-next-app.vercel.app/thumbnail.png",
+        url: "https://kyam-next-app.vercel.app/ogp/thumbnail.png",
         width: 1200,
         height: 630,
         alt: "Kyam Portal",
