@@ -14,7 +14,7 @@ export default function Footer() {
             <Link href="https://zenn.dev/yokamada_dev" className="footer__social-link">
               <SiZenn />
             </Link>
-            <Link href="#" className="footer__social-link">
+            <Link href="https://x.com/bumpfuji10" className="footer__social-link">
               <FaXTwitter />
             </Link>
           </div>
